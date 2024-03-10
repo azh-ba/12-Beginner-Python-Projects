@@ -9,4 +9,4 @@ The game was invented in the United States, and more than 110 million copies of 
 This is a recreational project of **Mad Libs**. 
 > `madlib.py` is a simple example of how the game, as well as string concatenation in Python, works.
 
-> `random_madlibs.py` will run randomly 1 out of 4 pre-made topics that Kylie provided.
+> `random_madlibs.py` will run randomly 1 out of 4 pre-made topics that Kylie provided. These topics lie in the `sample_madlibs` file.
