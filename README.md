@@ -2,7 +2,7 @@
 This is the repository for the collection of small beginner Python projects, guided by Kylie Ying.
 
 Course: [12 Beginner Python Projects - Coding Course](https://www.youtube.com/watch?v=8ext9G7xspg&t=9109s);
-Kylie Ying: [Yilie Ying](https://www.youtube.com/ycubed)
+Kylie Ying: [Youtube Channel](https://www.youtube.com/ycubed), [Github](https://github.com/kying18)
 
 This repository consists of these topics:
 - **MADLIBS**: 
