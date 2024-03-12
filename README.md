@@ -14,5 +14,5 @@ This repository consists of these topics:
       - Nested if-elif-else
       - try/except exceptions
 - **ROCK_PAPER_SCISSORS**:
-   - A traditional game where two players will choose one of the three objects (rock, paper, scissors), and compare to eachother. (rock beats scissors, scissors beats paper, paper beats rock).
+   - A traditional game where two players will choose one of the three objects (rock, paper, scissors), and compare to each other. (rock beats scissors, scissors beats paper, paper beats rock).
    - This project uses basic concept of defining functions, and string processing.
