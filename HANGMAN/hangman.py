@@ -1,6 +1,5 @@
 import random
 import string
-import copy
 from words import words
 
 def get_valid_word(words):
