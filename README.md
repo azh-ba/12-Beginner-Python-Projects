@@ -17,8 +17,14 @@ This repository consists of these topics:
    - A traditional game where two players will choose one of the three objects (rock, paper, scissors), and compare to each other. (rock beats scissors, scissors beats paper, paper beats rock).
    - This project uses basic concept of defining functions, and string processing.
 - **HANGMAN**:
-   - Another tranditional game where one player will think of a word, and the other players try to find it by guessing one letter at a time, within a limited number of guesses.
+   - A tranditional game where one player will think of a word, and the other players try to find it by guessing one letter at a time, within a limited number of guesses.
    - This project practices:
       - String manipulations (`upper()`, `len()`)
       - Set manipulations (`add()`, `remove()`, `join()`)
       - List comprehension
+- **TIC_TAC_TOE**:
+   - A traditional game where two players compete on a 3x3 grid, take turns fill in *X*s and *O*s. First player to successfully fill their characters 3 in a row, or 3 in a column, or 3 in a diagonal wins.
+   - This project covers:
+      - Class inheritances
+      - 2D manipulations (conditions related to rows and columns of the 3x3 grid)
+      - Introduction to complex rules
