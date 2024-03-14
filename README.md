@@ -26,5 +26,6 @@ This repository consists of these topics:
    - A traditional game where two players compete on a 3x3 grid, take turns fill in *X*s and *O*s. First player to successfully fill their characters 3 in a row, or 3 in a column, or 3 in a diagonal wins.
    - This project covers:
       - Class inheritances
+      - Static methods in class
       - 2D manipulations (conditions related to rows and columns of the 3x3 grid)
       - Introduction to complex rules
