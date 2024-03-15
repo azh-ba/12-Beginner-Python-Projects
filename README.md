@@ -29,3 +29,8 @@ This repository consists of these topics:
       - Static methods in class
       - 2D manipulations (conditions related to rows and columns of the 3x3 grid)
       - Introduction to complex rules
+- **TIC_TAC_TOE_MINIMAX**:
+   - Re-do the *Tic_Tac_Toe* project from scratch, and adding Minimax bot (optimal player).
+   - This project practices:
+      - Minimax algorithm implementation (with recursive)
+      - Fixing bugs
