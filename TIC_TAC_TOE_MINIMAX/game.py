@@ -4,8 +4,8 @@ class TicTacToe():
     def __init__(self):
         """Constructor of the class.
 
-        board       the board of the game
-        winner      the winner of the game"""
+        board       list    the board of the game
+        winner      char    the winner of the game"""
         self.board = [' ' for _ in range(9)]
         self.winner = None
     
@@ -23,7 +23,7 @@ class TicTacToe():
             print('| ' + ' | '.join(row) + ' |')
 
     def empty_squares(self):
-        """Return a list of empty squares."""
+        """Return a list of empty square's indexes."""
         return [i for i, x in enumerate(self.board) if x == ' ']
     
     def num_empty_squares(self):
@@ -34,8 +34,8 @@ class TicTacToe():
         """Make the player's move to the chosen square. 
         Check if the move is valid.
         
-        square      the square that the player wishes to place their letter in
-        letter      the player associated with letter (x_player or o_player)
+        square      int     the square that the player wishes to place their letter in
+        letter      char    the player associated with letter (x_player or o_player)
         """
         # place the letter in the square
         if self.board[square] == ' ':
@@ -47,8 +47,8 @@ class TicTacToe():
     def is_win(self, square, letter):
         """Check if a player is won after a move.
         
-        square      the square which the player make a move on it
-        letter      the player associated with letter (x_player or o_player)
+        square      int     the square which the player make a move on it
+        letter      char    the player associated with letter (x_player or o_player)
         """
         # check row
         row_index = square // 3
@@ -57,7 +57,7 @@ class TicTacToe():
             return True
         
         # check col
-        col_index = square // 3
+        col_index = square % 3
         col = [self.board[col_index + i*3] for i in range(3)]
         if all(s == letter for s in col):
             return True
@@ -74,13 +74,14 @@ class TicTacToe():
         # no winning
         return False
     
+
 def play(game, x_player, o_player, print_game = True):
     """Main function to play the game.
     
-    game            a instance of the TicTacToe game
-    x_player        player that is assigned with 'X'
-    o_player        player that is assigned with 'O'
-    print_game      print the game (or states). True if user wants to play, False if user wants to run many instances of the game
+    game            TicTacToe()     a instance of the TicTacToe game
+    x_player        Player()        player that is assigned with 'X'
+    o_player        Player()        player that is assigned with 'O'
+    print_game      bool            print the game (or states). True if user wants to play, False if user wants to run many instances of the game
     """
     # print the game board
     if print_game:
@@ -138,18 +139,47 @@ def play(game, x_player, o_player, print_game = True):
         print("It's a tie!")
     return 'T'
 
-if __name__ == '__main__':
+
+def manual(bot, start_first = True):
+    if start_first == True:
+        x_player = HumanPlayer('X')
+        o_player = bot
+    else:
+        x_player = bot
+        o_player = HumanPlayer('O')
+    game = TicTacToe()
+    play(game, x_player, o_player, print_game = True)
+
+
+def automatic(x_player, o_player, times):
     x_wins = 0
     o_wins = 0
     ties = 0
-    for _ in range(10):
+    for _ in range(times):
         game = TicTacToe()
-        x_player = MinimaxComputerPlayer('X')
-        o_player = RandomComputerPlayer('O')
         result = play(game, x_player, o_player, print_game = False)
         if result == 'X':
             x_wins += 1
         elif result == 'O':
             o_wins += 1
-        else:
+        elif result == 'T':
             ties += 1
+    print(f"X won {x_wins} times ({(x_wins / times * 100):.2f}%).")
+    print(f"O won {o_wins} times ({(o_wins / times * 100):.2f}%).")
+    print(f"Ties {ties} times ({(ties / times * 100):.2f}%).")
+
+
+if __name__ == '__main__':
+    """Experiment section. Place desired Player type into manual() or automatic() function.
+    
+    manual()        human vs bot (Set start_first = False if user wants to go second)
+    automatic()     bot vs bot"""
+    rx = RandomComputerPlayer('X')
+    ro = RandomComputerPlayer('O')
+    mx = MinimaxComputerPlayer('X')
+    mo = MinimaxComputerPlayer('O')
+
+    x_player = mx
+    o_player = mo
+    #manual(mx, start_first = False)
+    #automatic(x_player, o_player, 500)

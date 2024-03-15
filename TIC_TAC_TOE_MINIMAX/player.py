@@ -57,7 +57,7 @@ class MinimaxComputerPlayer(Player):
         if game.num_empty_squares() == 9:
             square = random.choice(game.empty_squares())
         else:
-            square = self.minimax(game, self.letter)
+            square = self.minimax(game, self.letter)['position']
         return square
     
     def minimax(self, game, letter):
@@ -78,7 +78,7 @@ class MinimaxComputerPlayer(Player):
         if letter == max_player:
             best_move = {'position': None,
                     'score': -math.inf}
-        elif letter == min_player:
+        else:
             best_move = {'position': None,
                     'score': math.inf}
             
@@ -96,7 +96,7 @@ class MinimaxComputerPlayer(Player):
             if letter == max_player:
                 if sim_move['score'] > best_move['score']:
                     best_move = sim_move
-            elif letter == min_player:
+            else:
                 if sim_move['score'] < best_move['score']:
                     best_move = sim_move
         
