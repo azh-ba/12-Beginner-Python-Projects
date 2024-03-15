@@ -1,4 +1,4 @@
-from player import HumanPlayer, RandomComputerPlayer
+from player import HumanPlayer, RandomComputerPlayer, MinimaxComputerPlayer
 
 class TicTacToe():
     def __init__(self):
@@ -139,7 +139,17 @@ def play(game, x_player, o_player, print_game = True):
     return 'T'
 
 if __name__ == '__main__':
-    game = TicTacToe()
-    x_player = HumanPlayer('X')
-    o_player = RandomComputerPlayer('O')
-    play(game, x_player, o_player, print_game = True)
+    x_wins = 0
+    o_wins = 0
+    ties = 0
+    for _ in range(10):
+        game = TicTacToe()
+        x_player = MinimaxComputerPlayer('X')
+        o_player = RandomComputerPlayer('O')
+        result = play(game, x_player, o_player, print_game = False)
+        if result == 'X':
+            x_wins += 1
+        elif result == 'O':
+            o_wins += 1
+        else:
+            ties += 1
