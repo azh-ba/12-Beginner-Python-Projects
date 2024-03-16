@@ -34,3 +34,8 @@ This repository consists of these topics:
    - This project practices:
       - Minimax algorithm implementation (with recursive)
       - Fixing bugs
+- **BINARY_SEARCH**:
+   - Introduction to binary search algorithm.
+   - This project covers:
+      - Binary search algorithm implementation (with recursive)
+      - `time()` function for tracking the duration of the algorithms
