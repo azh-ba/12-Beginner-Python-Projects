@@ -181,5 +181,5 @@ if __name__ == '__main__':
 
     x_player = mx
     o_player = mo
-    #manual(mx, start_first = False)
+    manual(mo, start_first = True)
     #automatic(x_player, o_player, 500)
