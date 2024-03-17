@@ -2,6 +2,7 @@ import random
 import time
 
 def naive_search(search_list, target):
+    """Search through the entire list."""
     for i in range(len(search_list)):
         if search_list[i] == target:
             return i
@@ -9,6 +10,9 @@ def naive_search(search_list, target):
 
 
 def binary_search(search_list, target, low = None, high = None):
+    """Compare the mid value of the list to the target. If not, compare it to the target.
+    mid < target: recurse the function with the upper list (from mid value to last value of the list).
+    mid > target: recurse the function with the lower list (from first value to mid value of the list)."""
     # find mid value
     if low is None:
         low = 0
@@ -31,12 +35,14 @@ def binary_search(search_list, target, low = None, high = None):
     
 
 def run_example_list():
+    """Example list."""
     list = [1, 2, 3, 6, 7, 9, 12, 59, 68, 72, 91, 101]
     target = 59
     print(binary_search(list, target))
 
 
 def run_random_list():
+    """Run both of the search methods with a sorted randomly-generated list."""
     length = 10000
 
     # generate a sorted list of random values
