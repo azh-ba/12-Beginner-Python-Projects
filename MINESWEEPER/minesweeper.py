@@ -21,13 +21,14 @@ class Minesweeper:
             self.mines = 10
         else:
             self.mines = mines
+        self.lose = None
 
     def generate_board(self):
-        """Generate mines and related values for the game."""
-        # initialize the empty board
+        """Generate mines for the game."""
+        # initialize the empty board; mines_list for storing mine locations
         self.board = [[' ' for _ in range(self.col)] for _ in range(self.row)]
-        row_list = [self.row]
-        col_list = [self.col]
+        self.mines_row_list = [self.row]
+        self.mines_col_list = [self.col]
         
         # generate mines for the board
         mine_placed = 0
@@ -35,9 +36,9 @@ class Minesweeper:
             row_rand = random.randint(0, (self.row - 1))
             col_rand = random.randint(0, (self.col - 1))
             if self.board[row_rand][col_rand] == ' ':
-                self.board[row_rand][col_rand] = 'X'
-                row_list.append(row_rand)
-                col_list.append(col_rand)
+                #self.board[row_rand][col_rand] = 'X'
+                self.mines_row_list.append(row_rand)
+                self.mines_col_list.append(col_rand)
                 mine_placed += 1
 
     def print_board(self):
@@ -50,29 +51,76 @@ class Minesweeper:
         for r in range(self.row):
             print(f'{num_list[r]} | ' + ' | '.join(self.board[r]) + ' |')
 
-    @staticmethod
-    def print_empty_board(row, col):
-        """Print the empty state of the game."""
-        # generate empty_board
-        empty_board = [[' ' for _ in range(col)] for _ in range(row)]
-        # generate number list for coordinate visualization
-        num_list = [str(x) for x in range(row)]
-        print('    ' + '   '.join(num_list))
-        print('___' + '_|__'.join('' for _ in range(row + 1)))
-        # print the game 1 row at a time
-        for r in range(row):
-            print(f'{num_list[r]} | ' + ' | '.join(empty_board[r]) + ' |')
+    def check_mine(self, row, col):
+        """Check if mine is existed in the location. Return True if yes."""
+        for i in range(self.row):
+            if (row == self.mines_row_list[i]) & (col == self.mines_col_list[i]):
+                return True
+        return False
 
-    def assign_values(self):
-        """Assign values"""
+    def check_empty(self):
+        """Check if the board is empty. Return True if yes."""
+        for row in range(self.row):
+            for col in range(self.col):
+                if self.board[row][col] == ' ':
+                    return True
+        return False
 
-def play():
+    def assign_values(self, row, col):
+        """Assign value to the square that the player chose.
+        row     int     player's horizontal value
+        col     int     player's vertical value
+        """
+        count = 0
+        if self.check_mine(row - 1, col - 1):
+           count += 1
+        if self.check_mine(row - 1, col):
+           count += 1
+        if self.check_mine(row - 1, col + 1):
+           count += 1
+        if self.check_mine(row, col - 1):
+           count += 1
+        if self.check_mine(row, col + 1):
+           count += 1
+        if self.check_mine(row + 1, col - 1):
+           count += 1
+        if self.check_mine(row + 1, col):
+           count += 1
+        if self.check_mine(row + 1, col + 1):
+           count += 1
+        return str(count)
+
+    def valid_input(self, row, col):
+        """Check if player input is valid. Return True if yes."""
+        if row is None and col is None:
+            return False
+        if self.board[row][col] != ' ':
+            return False
+        return True
+
+def play(game):
     """Function for running the game."""
-    os.system('cls')
-    game = Minesweeper()
     game.generate_board()
     game.print_board()
-
+    while game.check_empty():
+        row, col = None, None
+        while (row is None) and (col is None) or (game.valid_input(row, col) == False):
+            try:
+                row, col = map(int, input("Choose a square: (row, col) ").split())
+            except ValueError as ve:
+                print("Invalid input! Try again.")
+        if game.check_mine(row, col):
+            game.lose = True
+            break
+        else:
+            game.board[row][col] = game.assign_values(row, col)
+            game.print_board()
+    if game.lose:
+        print("You lose!")
+    else:
+        print("You won!")
 
 if __name__ == '__main__':
-    play()
+    os.system('cls')
+    game = Minesweeper()
+    play(game)
