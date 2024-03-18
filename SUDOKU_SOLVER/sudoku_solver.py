@@ -37,6 +37,8 @@ def next_empty_square(puzzle):
         for c in range(9):
             if puzzle[r][c] == 0:
                 return r, c
+
+    # no empty square existed        
     return None, None
 
 def sudoku_backtracking(puzzle):

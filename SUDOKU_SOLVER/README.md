@@ -6,4 +6,6 @@ There are several computer algorithms that will solve 9x9 puzzles (n = 9) in fra
 
 This project will implement backtracking, one of the algorithms (or methods) that can be used to solve a game of Sudoku.
 
-> ``:
+> `sudoku_solver.py`: User feeds an unfinished game of sudoku into the function, to receive a possible solution, or none if the puzzle is unsolvable.
+
+> `test.py`: This file is for testing various conditions.
