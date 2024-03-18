@@ -27,7 +27,7 @@ This repository consists of these topics:
    - This project covers:
       - Class inheritances
       - Static methods in class
-      - 2D manipulations (conditions related to rows and columns of the 3x3 grid)
+      - 2D list manipulations (conditions related to rows and columns of the 3x3 grid)
       - Introduction to complex rules
 - **TIC_TAC_TOE_MINIMAX**:
    - Re-do the *Tic_Tac_Toe* project from scratch, and adding Minimax bot (optimal player).
@@ -37,10 +37,15 @@ This repository consists of these topics:
 - **BINARY_SEARCH**:
    - Introduction to binary search algorithm.
    - This project covers:
-      - Binary search algorithm implementation (with recursive)
+      - Binary search algorithm implementation (with recursion)
       - `time()` function for tracking the duration of the algorithms
 - **MINESWEEPER**:
    - A digital game where a player has to open all the square on a board without choosing the mines.
    - This project practices:
       - Value calculation for the squares (with recursion)
       - Classes and functions implementation
+- **SUDOKU_SOLVER**:
+   - A logical game where player tries to fill a 9x9 grid with numbers from 1 to 9, so that each row, each column, and each block of 3x3 contains all numbers without duplicates.
+   - This project practices:
+      - Backtracking algorithm (with recursion)
+      - 2D list manipulations 
