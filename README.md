@@ -39,3 +39,8 @@ This repository consists of these topics:
    - This project covers:
       - Binary search algorithm implementation (with recursive)
       - `time()` function for tracking the duration of the algorithms
+- **MINESWEEPER**:
+   - A digital game where a player has to open all the square on a board without choosing the mines.
+   - This project practices:
+      - Value calculation for the squares (with recursion)
+      - Classes and functions implementation
