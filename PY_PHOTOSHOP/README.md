@@ -8,4 +8,4 @@ This is a project that tries to implement various photo manipulation methods, su
 
 > `image.py`: This file contains the *Image* class, that reads and writes the images using the PNG *Reader* and *Writer*.
 
-> `transform.py`: This file contains photo manipulation methods.
+> `transform.py`: This file contains photo manipulation methods (adjust brightness, adjust contrast, blur, sobel edge detection filter).
