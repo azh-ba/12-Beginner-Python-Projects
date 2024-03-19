@@ -1,12 +1,24 @@
 from image import Image
 import numpy as np
 
-def brighten(image, factor):
+def adjust_brightness(image, factor):
     """Make each channel higher by some amount.
     Factor is a value > 0, indicates how much brighteness the image is.
     (< 1 = darken, > 1 = brighten).
     """
-    pass
+    # get x, y pixels of image, & number of channels
+    x_pixel, y_pixel, num_channels = image.array.shape
+
+    # make an empty copy of the image
+    new_image = Image(x_pixels = x_pixel, y_pixels = y_pixel, num_channels = num_channels)
+
+    # non-vectorized
+    for x in range(x_pixel):
+        for y in range(y_pixel):
+            for c in range(num_channels):
+                new_image.array[x, y, c] = image.array[x, y, c] * factor
+    return new_image
+
 
 def adjust_contrast(image, factor, mid):
     """Adjust the contrast by increasing the difference from the user-defined midpoint by factor amount."""
@@ -37,3 +49,11 @@ def combine_images(image1, image2):
 if __name__ == '__main__':
     lake = Image(filename = 'lake.png')
     city = Image(filename = 'city.png')
+
+    """Adjust_brightness() --> brighter lake."""
+    # bright_lake_image = adjust_brightness(lake, 1.7)
+    # bright_lake_image.write_image('bright_lake_image.png')
+
+    """Adjust_brightness() --> darker lake."""
+    dark_lake_image = adjust_brightness(lake, 0.3)
+    dark_lake_image.write_image('dark_lake_image.png')
