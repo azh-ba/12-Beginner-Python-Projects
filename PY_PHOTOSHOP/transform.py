@@ -17,12 +17,32 @@ def adjust_brightness(image, factor):
         for y in range(y_pixel):
             for c in range(num_channels):
                 new_image.array[x, y, c] = image.array[x, y, c] * factor
+
+    # vectorized
+    # new_image.array = image.array * factor
+
     return new_image
 
 
-def adjust_contrast(image, factor, mid):
+def adjust_contrast(image, factor, mid = 0.5):
     """Adjust the contrast by increasing the difference from the user-defined midpoint by factor amount."""
-    pass
+    # get x, y pixels of image, & number of channels
+    x_pixel, y_pixel, num_channels = image.array.shape
+
+    # make an empty copy of the image
+    new_image = Image(x_pixels = x_pixel, y_pixels = y_pixel, num_channels = num_channels)
+
+    # non-vectorized
+    for x in range(x_pixel):
+        for y in range(y_pixel):
+            for c in range(num_channels):
+                new_image.array[x, y, c] = (image.array[x, y, c] - mid) * factor - mid
+
+    # vectorized
+    # new_image.array = (image.array - mid) * factor + mid
+
+    return new_image
+
 
 def blur(image, kernel_size):
     """Kernel size is the number of pixels to take into account when applying the blur.
@@ -55,5 +75,13 @@ if __name__ == '__main__':
     # bright_lake_image.write_image('bright_lake_image.png')
 
     """Adjust_brightness() --> darker lake."""
-    dark_lake_image = adjust_brightness(lake, 0.3)
-    dark_lake_image.write_image('dark_lake_image.png')
+    # dark_lake_image = adjust_brightness(lake, 0.3)
+    # dark_lake_image.write_image('dark_lake_image.png')
+
+    """Adjust_contrast() --> increase-contrast lake."""
+    increase_contrast_lake_image = adjust_contrast(lake, 2, 0.5)
+    increase_contrast_lake_image.write_image('increase_contrast_lake_image.png')
+
+    """Adjust_contrast() --> decrease-contrast lake."""
+    decrease_contrast_lake_image = adjust_contrast(lake, 0.7, 0.5)
+    decrease_contrast_lake_image.write_image('decrease_contrast_lake_image.png')
