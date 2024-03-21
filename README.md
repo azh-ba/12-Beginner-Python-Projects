@@ -49,3 +49,13 @@ This repository consists of these topics:
    - This project practices:
       - Backtracking algorithm (with recursion)
       - 2D list manipulations 
+- **PY_PHOTOSHOP**:
+   - A project focus on creating photo manipulation effects (brightness adjustment, contrast adjustment, blur, sobel edge detection filter), given the source code for PNG image processing.
+   - This project covers:
+      - Working with numpy (n-dimensional array)
+      - Working with existed source code
+- **GRAPH_COMPOSER**:
+   - A project about generating lyrics and texts using Markov chain model.
+   - This project practices:
+      - Introduction to Markov chain
+      - Working with dictionaries and lists
